@@ -5,10 +5,7 @@ import com.juliocesar.domain.enums.TipoCliente;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class Cliente implements Serializable {
@@ -30,6 +27,9 @@ public class Cliente implements Serializable {
     @ElementCollection
     @CollectionTable(name = "TELEFONE")
     private Set<String> telefones = new HashSet<>();
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> pedidos = new ArrayList<>();
 
     public Cliente() {
     }
@@ -99,5 +99,24 @@ public class Cliente implements Serializable {
         this.telefones = telefones;
     }
 
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
 
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cliente cliente = (Cliente) o;
+        return id.equals(cliente.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }
