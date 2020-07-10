@@ -1,6 +1,6 @@
 package com.juliocesar.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -18,7 +18,7 @@ public class Estado implements Serializable {
     private String nome;
 
     //Não serializa cidade, vai ser omitido na serialização
-    @JsonBackReference
+    @JsonIgnore
     @OneToMany(mappedBy = "estado")
     private List<Cidade> cidades = new ArrayList<>();
 

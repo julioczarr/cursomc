@@ -1,7 +1,6 @@
 package com.juliocesar.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.juliocesar.domain.enums.EstadoPagamento;
 
 import javax.persistence.Entity;

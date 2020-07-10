@@ -1,11 +1,8 @@
 package com.juliocesar.domain;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -19,7 +16,7 @@ public class Categoria implements Serializable {
     private String nome;
 
     //no lado que voce quer que venham os objetos referenciados
-    @JsonManagedReference
+
     @ManyToMany(mappedBy = "categorias")
     private List<Produto> produtos = new ArrayList<>();
 

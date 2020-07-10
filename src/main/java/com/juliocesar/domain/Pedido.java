@@ -1,7 +1,6 @@
 package com.juliocesar.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -24,11 +23,10 @@ public class Pedido implements Serializable {
     //Necessário se não da problme de entidade transiente quando vai salver pedido e pagamento dele
     //id do pagamento será o mesmo do pedido.
     //video específico de mapeamento 1 p 1]
-    @JsonManagedReference
+
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "pedido")
     private Pagamento pagamento;
 
-    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
